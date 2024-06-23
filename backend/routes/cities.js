@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router() 
 
-router.get('/test', (req, res) => { 
-  res.send({ msg: 'Cities test route.'}) 
-})
+router.get('/', (req, res) => {
+  res.send('Cities');
+});
 
 module.exports = router
