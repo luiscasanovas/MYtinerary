@@ -5,14 +5,11 @@ const mongoose = require("mongoose");
 
 const app = express();
 const port = process.env.PORT || 5000;
-const db = require('./keys').mongoURI;
-
-console.log('MongoURI:', db);
+const db = require('./keys').mongoURI; 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
 app.use('/cities', require('./routes/cities'));
 
 app.get('/', (req, res) => { 

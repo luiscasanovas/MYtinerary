@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../App.css'; 
+import '../App.css';
 
 const Landing = () => {
   return (
@@ -23,22 +23,23 @@ const Landing = () => {
       </Row>
       <Row className="justify-content-center my-4">
         <Col xs="auto" className="text-center">
-          <p>Start browsing</p>
-          <img src="/circled_arrow.png" className="img-fluid browse-button" alt="Start browsing" style={{ width: '50px', height: '50px', cursor: 'pointer' }} />
+          <Link to="/cities">
+            <img src="/circled_arrow.png" className="img-fluid browse-button" alt="Start browsing" />
+          </Link>
         </Col>
       </Row>
-      <Row className="my-4">
-        <Col xs={6} className="text-left">
-          <Link to="/login" className="btn btn-primary">Log in</Link>
+      <Row className="justify-content-between my-4">
+        <Col xs="auto">
+          <Link to="/login" className="btn btn-primary mx-2">Log in</Link>
         </Col>
-        <Col xs={6} className="text-right">
-          <Link to="/create-account" className="btn btn-secondary">Create Account</Link>
+        <Col xs="auto">
+          <Link to="/create-account" className="btn btn-secondary mx-2">Create Account</Link>
         </Col>
       </Row>
       <Row className="justify-content-center my-4">
-        <Col xs="auto" className="text-center">
+        <Col xs="auto">
           <Link to="/">
-            <img src="/homeIcon.png" className="img-fluid home-icon" alt="Home" style={{ width: '30px', height: '30px', cursor: 'pointer' }} />
+            <img src="/homeIcon.png" className="img-fluid home-icon" alt="Home" />
           </Link>
         </Col>
       </Row>
