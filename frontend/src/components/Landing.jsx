@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../App.css';
+import '../App.css'; 
 
 const Landing = () => {
   return (
@@ -28,18 +28,16 @@ const Landing = () => {
           </Link>
         </Col>
       </Row>
-      <Row className="justify-content-between my-4">
+      <Row className="justify-content-center my-4">
         <Col xs="auto">
           <Link to="/login" className="btn btn-primary mx-2">Log in</Link>
-        </Col>
-        <Col xs="auto">
           <Link to="/create-account" className="btn btn-secondary mx-2">Create Account</Link>
         </Col>
       </Row>
       <Row className="justify-content-center my-4">
         <Col xs="auto">
           <Link to="/">
-            <img src="/homeIcon.png" className="img-fluid home-icon" alt="Home" />
+            <img src="/homeIcon.png" className="img-fluid home-icon" alt="Home" style={{ width: '30px', height: '30px', cursor: 'pointer' }} />
           </Link>
         </Col>
       </Row>

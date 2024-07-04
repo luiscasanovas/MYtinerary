@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Landing from './components/Landing';
+import Cities from './components/Cities';
 import Login from './components/Login';
 import CreateAccount from './components/CreateAccount';
-import Cities from './components/Cities';
 import './App.css';
 
 function App() {

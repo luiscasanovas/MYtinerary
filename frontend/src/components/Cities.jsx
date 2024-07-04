@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { fetchCities } from '../store/actions/cityActions';
 
-const Cities = () => {
-  const [cities, setCities] = useState([]);
+const Cities = ({ citiesData, fetchCities }) => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/cities/all')
-      .then(response => {
-        setCities(response.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the cities!', error);
-      });
-  }, []);
+    fetchCities();
+  }, [fetchCities]);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 
-  const filteredCities = cities.filter(city => 
+  const filteredCities = citiesData.cities.filter(city => 
     city.name.toLowerCase().startsWith(filter.toLowerCase())
   );
 
@@ -32,6 +26,8 @@ const Cities = () => {
         value={filter}
         onChange={handleFilterChange}
       />
+      {citiesData.loading && <p>Loading...</p>}
+      {citiesData.error && <p>{citiesData.error}</p>}
       <ul>
         {filteredCities.map(city => (
           <li key={city._id}>{city.name}, {city.country}</li>
@@ -41,4 +37,16 @@ const Cities = () => {
   );
 };
 
-export default Cities;
+const mapStateToProps = (state) => {
+  return {
+    citiesData: state.cities
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCities: () => dispatch(fetchCities())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);
