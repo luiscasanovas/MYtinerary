@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchCities } from '../store/actions/cityActions';
+import { Container, Row, Col, Form, ListGroup, Spinner, Alert } from 'react-bootstrap';
 
 const Cities = ({ citiesData, fetchCities }) => {
   const [filter, setFilter] = useState('');
@@ -18,22 +19,32 @@ const Cities = ({ citiesData, fetchCities }) => {
   );
 
   return (
-    <div>
-      <h1>Cities</h1>
-      <input 
-        type="text" 
-        placeholder="Filter cities" 
-        value={filter}
-        onChange={handleFilterChange}
-      />
-      {citiesData.loading && <p>Loading...</p>}
-      {citiesData.error && <p>{citiesData.error}</p>}
-      <ul>
-        {filteredCities.map(city => (
-          <li key={city._id}>{city.name}, {city.country}</li>
-        ))}
-      </ul>
-    </div>
+    <Container>
+      <Row className="my-3">
+        <Col>
+          <h1 className="text-center">Cities</h1>
+          <Form>
+            <Form.Group controlId="formCityFilter">
+              <Form.Control 
+                type="text" 
+                placeholder="Filter cities" 
+                value={filter}
+                onChange={handleFilterChange}
+              />
+            </Form.Group>
+          </Form>
+          {citiesData.loading && <Spinner animation="border" className="d-block mx-auto" />}
+          {citiesData.error && <Alert variant="danger">{citiesData.error}</Alert>}
+          <ListGroup>
+            {filteredCities.map(city => (
+              <ListGroup.Item key={city._id} className="mb-2">
+                {city.name}, {city.country}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

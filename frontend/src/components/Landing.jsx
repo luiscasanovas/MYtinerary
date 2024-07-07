@@ -17,14 +17,14 @@ const Landing = () => {
         </Col>
       </Row>
       <Row className="justify-content-center my-4">
-        <Col xs={10}>
-          <p>Find your perfect trip, designed by insiders who know and love their cities.</p>
+        <Col xs={10} md={8} lg={6}>
+          <p className="lead">Find your perfect trip, designed by insiders who know and love their cities.</p>
         </Col>
       </Row>
       <Row className="justify-content-center my-4">
         <Col xs="auto" className="text-center">
           <Link to="/cities">
-            <img src="/circled_arrow.png" className="img-fluid browse-button" alt="Start browsing" />
+            <img src="/circled_arrow.png" className="img-fluid browse-button" alt="Start browsing" style={{ maxWidth: '100px' }} />
           </Link>
         </Col>
       </Row>
