@@ -10,7 +10,9 @@ const db = require('./keys').mongoURI;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+
 app.use('/cities', require('./routes/cities'));
+app.use('/itineraries', require('./routes/itineraries'));
 
 app.get('/', (req, res) => { 
   res.send('Hello, World!'); 

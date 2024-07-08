@@ -1,35 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const cityModel = require('../models/cityModel'); 
-
-router.get('/test', (req, res) => {
-  res.send({ msg: 'Cities test route.' });
-});
+const City = require('../models/cityModel');
 
 router.get('/all', (req, res) => {
-  cityModel.find()
+  City.find({})
     .then(cities => {
       res.json(cities);
     })
     .catch(err => {
-      console.log(err);
-      res.status(500).json({ error: 'An error occurred while retrieving cities' });
+      console.error(err);
+      res.status(500).json({ error: 'An error occurred while retrieving cities.' });
     });
 });
 
 router.post('/', (req, res) => {
-  const nuevaCiudad = new cityModel({
-    name: req.body.name,
-    country: req.body.country,
-    img: req.body.img
+  const { name, country, img } = req.body;
+
+  const newCity = new City({
+    name,
+    country,
+    img
   });
 
-  nuevaCiudad.save()
-    .then(ciudad => {
-      res.send(ciudad);
+  newCity.save()
+    .then(city => {
+      res.status(201).json(city);
     })
     .catch(err => {
-      res.status(500).send("Server error");
+      console.error(err);
+      res.status(500).json({ error: 'An error occurred while saving the city.' });
     });
 });
 
