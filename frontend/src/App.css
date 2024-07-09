@@ -90,3 +90,8 @@ body {
 .list-group-item:hover {
   background-color: #0056b3;
 }
+.link-item {
+  text-decoration: none;
+  color: inherit;
+}
+

@@ -16,7 +16,12 @@ const ItinerarySchema = new Schema({
   },
   duration: {
     type: Number,
-    required: true
+    required: true,
+    min: [1, 'Duration must be at least 1 day'],
+    validate: {
+      validator: Number.isInteger,
+      message: 'Duration must be an integer value'
+    }
   },
   price: {
     type: Number,

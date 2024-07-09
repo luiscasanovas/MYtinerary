@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchCities } from '../store/actions/cityActions';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, ListGroup, Spinner, Alert } from 'react-bootstrap';
 
 const Cities = ({ citiesData, fetchCities }) => {
@@ -33,12 +34,12 @@ const Cities = ({ citiesData, fetchCities }) => {
               />
             </Form.Group>
           </Form>
-          {citiesData.loading && <Spinner animation="border" className="d-block mx-auto" />}
+          {citiesData.loading && <Spinner animation="border" />}
           {citiesData.error && <Alert variant="danger">{citiesData.error}</Alert>}
           <ListGroup>
             {filteredCities.map(city => (
-              <ListGroup.Item key={city._id} className="mb-2">
-                {city.name}, {city.country}
+              <ListGroup.Item key={city._id}>
+                <Link to={`/cities/${city._id}`} className="link-item">{city.name}</Link>
               </ListGroup.Item>
             ))}
           </ListGroup>

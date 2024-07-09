@@ -13,22 +13,19 @@ router.get('/all', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-  const { name, country, img } = req.body;
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
 
-  const newCity = new City({
-    name,
-    country,
-    img
-  });
-
-  newCity.save()
+  City.findById(id)
     .then(city => {
-      res.status(201).json(city);
+      if (!city) {
+        return res.status(404).json({ error: 'City not found' });
+      }
+      res.json(city);
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: 'An error occurred while saving the city.' });
+      res.status(500).json({ error: 'An error occurred while retrieving the city.' });
     });
 });
 

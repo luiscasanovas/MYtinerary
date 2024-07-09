@@ -34,13 +34,6 @@ const Landing = () => {
           <Link to="/create-account" className="btn btn-secondary mx-2">Create Account</Link>
         </Col>
       </Row>
-      <Row className="justify-content-center my-4">
-        <Col xs="auto">
-          <Link to="/">
-            <img src="/homeIcon.png" className="img-fluid home-icon" alt="Home" style={{ width: '30px', height: '30px', cursor: 'pointer' }} />
-          </Link>
-        </Col>
-      </Row>
     </Container>
   );
 };
