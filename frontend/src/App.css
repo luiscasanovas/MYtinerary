@@ -1,14 +1,13 @@
-body, html {
+body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
-#root, .App {
+html, body, #root, .App {
   height: 100%;
 }
 
@@ -109,11 +108,21 @@ body, html {
 .link-item {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .link-item:hover,
 .link-item:focus {
   color: inherit;
+}
+
+.city-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
 }
 
 .card-title {
@@ -127,4 +136,48 @@ body, html {
 .itinerary-item p {
   margin: 0;
   padding: 0;
+}
+
+/* Custom CSS for City Cards */
+.city-card {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  height: 300px; /* Fixed height for all cards */
+  width: 100%; /* Ensure the card takes full width */
+}
+
+.city-card-img {
+  height: 100%; /* Ensure the image covers the card height */
+  width: 100%; /* Ensure the image covers the card width */
+  object-fit: cover; /* Ensures the image covers the card area */
+}
+
+.city-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.city-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.star-rating {
+  display: inline-block;
+}
+
+.star {
+  font-size: 20px;
+  color: lightgray;
+}
+
+.star.filled {
+  color: gold;
 }

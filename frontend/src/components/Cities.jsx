@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchCities } from '../store/actions/cityActions';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Form, ListGroup, Spinner, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Form, Card, Spinner, Alert } from 'react-bootstrap';
 
 const Cities = ({ citiesData, fetchCities }) => {
   const [filter, setFilter] = useState('');
@@ -37,17 +37,20 @@ const Cities = ({ citiesData, fetchCities }) => {
           </Form>
           {citiesData.loading && <Spinner animation="border" />}
           {citiesData.error && <Alert variant="danger">{citiesData.error}</Alert>}
-          <ListGroup>
+          <Row>
             {filteredCities.map(city => (
-              <ListGroup.Item key={city._id} className="mb-2">
+              <Col key={city._id} xs={12} md={6} lg={4} className="mb-4">
                 <Link to={`/cities/${city._id}`} className="link-item">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <span>{city.name}</span>
-                  </div>
+                  <Card className="city-card">
+                    <Card.Img variant="top" src={city.image} className="city-card-img" />
+                    <Card.ImgOverlay className="city-card-overlay">
+                      <Card.Title className="city-card-title">{city.name}, {city.country}</Card.Title>
+                    </Card.ImgOverlay>
+                  </Card>
                 </Link>
-              </ListGroup.Item>
+              </Col>
             ))}
-          </ListGroup>
+          </Row>
         </Col>
       </Row>
     </Container>

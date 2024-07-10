@@ -4,7 +4,7 @@ import { fetchItineraries } from '../store/actions/itineraryActions';
 import { Container, Row, Col, ListGroup, Spinner, Alert, Button } from 'react-bootstrap';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import StarRating from './StarRating'; 
 const CityDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ const CityDetail = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/cities/${cityId}`)
       .then(response => {
-        setCityName(response.data.name);
-        dispatch(fetchItineraries(response.data.name));
+        setCityName(response.data.name); 
+        dispatch(fetchItineraries(response.data.name)); 
       })
       .catch(err => {
         console.error('Error fetching city details:', err);
@@ -37,7 +37,7 @@ const CityDetail = () => {
             {filteredItineraries.map(itinerary => (
               <ListGroup.Item key={itinerary._id} className="mb-2 itinerary-item">
                 <h5 className="card-title">{itinerary.title}</h5>
-                <p><strong>Rating:</strong> {itinerary.rating}</p>
+                <div><strong>Rating:</strong> <StarRating rating={itinerary.rating} /></div>
                 <p><strong>Duration:</strong> {itinerary.duration} {itinerary.duration === 1 ? 'day' : 'days'}</p>
                 <p><strong>Price:</strong> ${itinerary.price}</p>
                 <p><strong>Hashtags:</strong> {itinerary.hashtags.join(', ')}</p>

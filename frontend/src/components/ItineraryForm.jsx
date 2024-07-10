@@ -32,23 +32,28 @@ const ItineraryForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (rating < 0 || rating > 10 || duration <= 0 || price <= 0) {
-      setError('Rating must be between 0 and 10. Duration and price must be positive numbers.');
+    const ratingValue = parseInt(rating, 10);
+    if (ratingValue < 0 || ratingValue > 5 || duration <= 0 || price <= 0) {
+      setError('Rating must be between 0 and 5. Duration and price must be positive numbers.');
+      return;
+    }
+    if (Number.isNaN(ratingValue)) {
+      setError('Rating must be a whole number.');
       return;
     }
 
     const newItinerary = {
       title,
       profilePicture,
-      rating: Number(rating),
-      duration: Number(duration), 
+      rating: ratingValue,
+      duration: Number(duration),
       price: Number(price),
       hashtags: hashtags.split(',').map(tag => tag.trim()),
       city: cityName
     };
 
     dispatch(addItinerary(newItinerary));
-    navigate(`/cities/${cityId}`); 
+    navigate(`/cities/${cityId}`);
   };
 
   return (
@@ -84,7 +89,8 @@ const ItineraryForm = () => {
                 onChange={(e) => setRating(e.target.value)} 
                 required 
                 min="0" 
-                max="10" 
+                max="5" 
+                step="1" 
               />
             </Form.Group>
             <Form.Group>
@@ -116,11 +122,11 @@ const ItineraryForm = () => {
                 required 
               />
             </Form.Group>
-            <Row className="mt-4">
-              <Col className="text-start">
-                <Button variant="secondary" onClick={() => navigate(`/cities/${cityId}`)}>Back</Button>
+            <Row>
+              <Col>
+                <Button variant="secondary" onClick={() => navigate(-1)}>Back</Button>
               </Col>
-              <Col className="text-end">
+              <Col className="text-right">
                 <Button variant="primary" type="submit">Submit</Button>
               </Col>
             </Row>
