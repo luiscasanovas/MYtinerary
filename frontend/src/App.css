@@ -1,9 +1,27 @@
-body {
+body, html {
   font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; 
+}
+
+#root, .App {
+  height: 100%;
 }
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .App-logo {
@@ -72,26 +90,41 @@ body {
   border-color: #6c757d;
 }
 
-body {
-  background-color: #f8f9fa;
-}
-
 .navbar {
   margin-bottom: 20px;
 }
 
 .list-group-item {
-  background-color: #007bff;
-  color: white;
-  text-align: center;
-  font-size: 1.25rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
 }
 
-.list-group-item:hover {
-  background-color: #0056b3;
+.list-group-item:hover,
+.list-group-item:focus {
+  background-color: #f8f9fa;
+  cursor: pointer;
 }
+
 .link-item {
   text-decoration: none;
   color: inherit;
 }
 
+.link-item:hover,
+.link-item:focus {
+  color: inherit;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.itinerary-item {
+  text-align: left;
+}
+
+.itinerary-item p {
+  margin: 0;
+  padding: 0;
+}

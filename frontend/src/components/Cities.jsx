@@ -31,6 +31,7 @@ const Cities = ({ citiesData, fetchCities }) => {
                 placeholder="Filter cities" 
                 value={filter}
                 onChange={handleFilterChange}
+                className="mb-4"
               />
             </Form.Group>
           </Form>
@@ -38,8 +39,12 @@ const Cities = ({ citiesData, fetchCities }) => {
           {citiesData.error && <Alert variant="danger">{citiesData.error}</Alert>}
           <ListGroup>
             {filteredCities.map(city => (
-              <ListGroup.Item key={city._id}>
-                <Link to={`/cities/${city._id}`} className="link-item">{city.name}</Link>
+              <ListGroup.Item key={city._id} className="mb-2">
+                <Link to={`/cities/${city._id}`} className="link-item">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span>{city.name}</span>
+                  </div>
+                </Link>
               </ListGroup.Item>
             ))}
           </ListGroup>

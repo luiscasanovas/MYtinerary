@@ -108,7 +108,7 @@ const ItineraryForm = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Hashtags (comma separated)</Form.Label>
+              <Form.Label>Hashtags</Form.Label>
               <Form.Control 
                 type="text" 
                 value={hashtags} 
@@ -116,7 +116,14 @@ const ItineraryForm = () => {
                 required 
               />
             </Form.Group>
-            <Button variant="primary" type="submit">Submit</Button>
+            <Row className="mt-4">
+              <Col className="text-start">
+                <Button variant="secondary" onClick={() => navigate(`/cities/${cityId}`)}>Back</Button>
+              </Col>
+              <Col className="text-end">
+                <Button variant="primary" type="submit">Submit</Button>
+              </Col>
+            </Row>
           </Form>
         </Col>
       </Row>
