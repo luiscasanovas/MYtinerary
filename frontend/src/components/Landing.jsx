@@ -5,18 +5,15 @@ import '../App.css';
 
 const Landing = () => {
   return (
-    <Container fluid className="text-center d-flex flex-column justify-content-center align-items-center min-vh-100 p-0">
+    <Container fluid className="text-center d-flex flex-column justify-content-center align-items-center min-vh-100 p-0 landing-container">
       <Row className="justify-content-center m-0">
         <Col xs={12} className="p-0">
-          <img src="/logo.png" className="img-fluid logo-80" alt="MYtinerary logo" />
+          <img src="/logo2.png" className="img-fluid full-page-logo" alt="MYtinerary logo" />
         </Col>
-      </Row>
-      <Row className="justify-content-center mt-4">
-       
       </Row>
       <Row className="justify-content-center my-4">
         <Col xs={10} md={8} lg={6}>
-          <p className="lead">Find your perfect trip, designed by insiders who know and love their cities.</p>
+          <h2 className="landing-subtitle">By travelers for travelers</h2>
         </Col>
       </Row>
       <Row className="justify-content-center my-4">

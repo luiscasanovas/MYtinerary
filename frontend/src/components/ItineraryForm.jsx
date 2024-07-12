@@ -32,20 +32,15 @@ const ItineraryForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const ratingValue = parseInt(rating, 10);
-    if (ratingValue < 0 || ratingValue > 5 || duration <= 0 || price <= 0) {
+    if (rating < 0 || rating > 5 || duration <= 0 || price <= 0) {
       setError('Rating must be between 0 and 5. Duration and price must be positive numbers.');
-      return;
-    }
-    if (Number.isNaN(ratingValue)) {
-      setError('Rating must be a whole number.');
       return;
     }
 
     const newItinerary = {
       title,
       profilePicture,
-      rating: ratingValue,
+      rating: Number(rating),
       duration: Number(duration),
       price: Number(price),
       hashtags: hashtags.split(',').map(tag => tag.trim()),
@@ -60,9 +55,9 @@ const ItineraryForm = () => {
     <Container>
       <Row className="justify-content-center">
         <Col md={6}>
-          <h2>Add New Itinerary</h2>
+          <h2 style={{ color: 'white' }}>Add New Itinerary</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{ color: 'white' }}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
               <Form.Control 
@@ -90,7 +85,7 @@ const ItineraryForm = () => {
                 required 
                 min="0" 
                 max="5" 
-                step="1" 
+                step="0.5"
               />
             </Form.Group>
             <Form.Group>
@@ -122,14 +117,7 @@ const ItineraryForm = () => {
                 required 
               />
             </Form.Group>
-            <Row>
-              <Col>
-                <Button variant="secondary" onClick={() => navigate(-1)}>Back</Button>
-              </Col>
-              <Col className="text-right">
-                <Button variant="primary" type="submit">Submit</Button>
-              </Col>
-            </Row>
+            <Button variant="primary" type="submit" className="browse-button">Submit</Button>
           </Form>
         </Col>
       </Row>

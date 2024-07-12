@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItineraries } from '../store/actions/itineraryActions';
-import { Container, Row, Col, ListGroup, Spinner, Alert, Button } from 'react-bootstrap';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Container, Row, Col, ListGroup, Spinner, Alert } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import StarRating from './StarRating'; 
+import StarRating from './StarRating';
+
 const CityDetail = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { id: cityId } = useParams(); 
   const [cityName, setCityName] = useState('');
   const itineraryState = useSelector(state => state.itineraries);
@@ -30,7 +30,7 @@ const CityDetail = () => {
     <Container>
       <Row>
         <Col>
-          <h2 className="text-center">Itineraries for {cityName}</h2>
+          <h2 className="text-center fadeIn">Itineraries for {cityName}</h2>
           {loading && <Spinner animation="border" />}
           {error && <Alert variant="danger">{error}</Alert>}
           <ListGroup>
@@ -44,16 +44,6 @@ const CityDetail = () => {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <Row className="mt-4">
-            <Col className="text-start">
-              <Button variant="secondary" onClick={() => navigate('/cities')}>Back</Button>
-            </Col>
-            <Col className="text-end">
-              <Link to={`/add-itinerary/${cityId}`}>
-                <Button variant="primary">Add New Itinerary</Button>
-              </Link>
-            </Col>
-          </Row>
         </Col>
       </Row>
     </Container>

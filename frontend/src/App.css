@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #00a5bd, #080c52); /* Apply the gradient background to the body */
   margin: 0;
   padding: 0;
   height: 100%;
@@ -61,6 +61,8 @@ html, body, #root, .App {
 .logo-80 {
   width: 80%;
   height: auto;
+  max-width: 150px;
+  animation: fadeInDown 1s;
 }
 
 .mt-4 {
@@ -68,9 +70,20 @@ html, body, #root, .App {
 }
 
 .browse-button {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
+  background-color: #00a5bd; /* Updated color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.browse-button:hover {
+  background-color: #008c9d; /* Darker shade for hover */
+  transform: scale(1.1);
 }
 
 .home-icon {
@@ -138,19 +151,19 @@ html, body, #root, .App {
   padding: 0;
 }
 
-/* Custom CSS for City Cards */
 .city-card {
   position: relative;
   overflow: hidden;
   border: none;
-  height: 300px; /* Fixed height for all cards */
-  width: 100%; /* Ensure the card takes full width */
+  height: 300px; 
+  width: 100%; 
+  background: transparent; /* Ensure no background conflicts */
 }
 
 .city-card-img {
-  height: 100%; /* Ensure the image covers the card height */
-  width: 100%; /* Ensure the image covers the card width */
-  object-fit: cover; /* Ensures the image covers the card area */
+  height: 100%; 
+  width: 100%; 
+  object-fit: cover; 
 }
 
 .city-card-overlay {
@@ -180,4 +193,87 @@ html, body, #root, .App {
 
 .star.filled {
   color: gold;
+}
+
+.landing-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure it takes the full height of the viewport */
+}
+
+.landing-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: fadeIn 1s;
+}
+
+.landing-subtitle {
+  font-size: 1.5rem; /* Increased font size for emphasis */
+  font-weight: 500; /* Slightly bold */
+  margin-top: 10px;
+  animation: fadeInUp 1s;
+}
+
+/* New styles for white headers */
+h1, h2, h3, h4, h5, h6 {
+  color: white !important; /* Added !important to ensure it overrides other styles */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f8f9fa;
+  padding: 10px 0;
+}
+
+.footer-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-button {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
