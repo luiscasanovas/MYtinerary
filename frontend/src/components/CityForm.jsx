@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const CityForm = () => {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
-  const [img, setImg] = useState('');
+  const [image, setImage] = useState('');
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
@@ -16,15 +16,15 @@ const CityForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !country) {
-      setError('Name and country are required fields.');
+    if (!name || !country || !image) {
+      setError('All fields are required.');
       return;
     }
 
     const newCity = {
       name,
       country,
-      img
+      image
     };
 
     dispatch(addCity(newCity));
@@ -32,14 +32,14 @@ const CityForm = () => {
   };
 
   return (
-    <Container>
+    <Container className="form-container">
       <Row className="justify-content-center">
         <Col md={6}>
-          <h2>Add New City</h2>
+          <h2 style={{ color: 'white' }}>Add New City</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{ color: 'white' }}>
             <Form.Group>
-              <Form.Label>City Name</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control 
                 type="text" 
                 value={name} 
@@ -60,18 +60,12 @@ const CityForm = () => {
               <Form.Label>Image URL</Form.Label>
               <Form.Control 
                 type="text" 
-                value={img} 
-                onChange={(e) => setImg(e.target.value)} 
+                value={image} 
+                onChange={(e) => setImage(e.target.value)} 
+                required 
               />
             </Form.Group>
-            <Row className="mt-4">
-              <Col className="text-start">
-                <Button variant="secondary" onClick={() => navigate('/cities')}>Back</Button>
-              </Col>
-              <Col className="text-end">
-                <Button variant="primary" type="submit">Submit</Button>
-              </Col>
-            </Row>
+            <Button type="submit" className="small-submit-button">Submit</Button>
           </Form>
         </Col>
       </Row>

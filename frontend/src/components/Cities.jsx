@@ -20,15 +20,15 @@ const Cities = ({ citiesData, fetchCities }) => {
   );
 
   return (
-    <Container>
+    <Container className="city-container">
       <Row className="my-3">
         <Col>
-          <h1 className="text-center fade-in">Cities</h1> {/* Applied fade-in class */}
+          <h1 className="text-center fadeIn text-white">Cities</h1>
           <Form>
             <Form.Group controlId="formCityFilter">
               <Form.Control 
                 type="text" 
-                placeholder="Find your place"  // Updated placeholder text
+                placeholder="Find your place"
                 value={filter}
                 onChange={handleFilterChange}
                 className="mb-4"

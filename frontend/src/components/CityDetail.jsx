@@ -27,7 +27,7 @@ const CityDetail = () => {
   const filteredItineraries = itineraries.filter(itinerary => itinerary.city === cityName);
 
   return (
-    <Container>
+    <Container className="itineraries-container">
       <Row>
         <Col>
           <h2 className="text-center fadeIn">Itineraries for {cityName}</h2>

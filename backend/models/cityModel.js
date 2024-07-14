@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const CitySchema = new Schema({
+const CitySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -11,9 +10,10 @@ const CitySchema = new Schema({
     type: String,
     required: true
   },
-  img: {
-    type: String
+  image: {
+    type: String,
+    required: true
   }
-});
+}, { collection: 'Cities' }); 
 
-module.exports = mongoose.model('City', CitySchema, 'Cities'); 
+module.exports = mongoose.model('City', CitySchema);

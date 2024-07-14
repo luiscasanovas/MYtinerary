@@ -52,7 +52,7 @@ const ItineraryForm = () => {
   };
 
   return (
-    <Container>
+    <Container className="form-container">
       <Row className="justify-content-center">
         <Col md={6}>
           <h2 style={{ color: 'white' }}>Add New Itinerary</h2>
@@ -117,7 +117,7 @@ const ItineraryForm = () => {
                 required 
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="browse-button">Submit</Button>
+            <Button type="submit" className="small-submit-button">Submit</Button>
           </Form>
         </Col>
       </Row>

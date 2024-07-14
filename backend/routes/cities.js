@@ -29,4 +29,20 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+  const { name, country, image } = req.body;
+  const newCity = new City({
+    name,
+    country,
+    image
+  });
+
+  newCity.save()
+    .then(city => res.status(201).json(city))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'An error occurred while adding the city.' });
+    });
+});
+
 module.exports = router;
